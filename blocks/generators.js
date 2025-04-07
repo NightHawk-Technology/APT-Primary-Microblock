@@ -3,10 +3,9 @@ Blockly.JavaScript.definitions_['include']['Wire'] = '#include <Wire.h>';
 Blockly.JavaScript.definitions_['include']['POP32'] = '#include <POP32.h>';
 Blockly.JavaScript.definitions_['include']['MPU6050'] = '#include <MPU6050_light.h>';
 Blockly.JavaScript.definitions_['include']['QuickPID'] = '#include <QuickPID.h>';
-Blockly.JavaScript.definitions_['define']['value'] = `
-float currentAngle = 0.0;  // องศาปัจจุบัน
-float TurnOutput = 0.0;    // ค่าที่จะส่งไปยังมอเตอร์
-float turnSetpoint = 0.0;  // องศาที่ต้องการ
+Blockly.JavaScript.definitions_['define']['value'] = `float currentAngle = 0.0;
+float TurnOutput = 0.0;
+float turnSetpoint = 0.0;
 
 MPU6050 mpu(Wire);
 QuickPID turnPID(&currentAngle, &TurnOutput, &turnSetpoint);`;
@@ -81,3 +80,56 @@ Blockly.JavaScript['bline'] = function(block) {
   var code = `bline(${number_speed});\n`;
   return code;
 }
+
+Blockly.JavaScript['sensor_check'] = function(block) {
+  var code = `oled.clear();
+for(int i = 0; i < 6; i++){
+   oled.text(i, 0, "CH%d: %d", i, analog(i));
+ }
+oled.show();\n`;
+  return code;
+}
+
+Blockly.JavaScript['getGyro'] = function(block) {
+  const dropdown_axis = block.getFieldValue('axis');
+  var code = `mpu.getGyro${dropdown_axis}()`;
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['getAngle'] = function(block) {
+  const dropdown_axis = block.getFieldValue('axis');
+  var code = `mpu.getAngle${dropdown_axis}()`;
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+};
+
+Blockly.JavaScript['mpuUpdate'] = function(block) {
+  var code = `mpu.update();\n`;
+  return code;
+};
+
+Blockly.JavaScript['knob'] = function(block) {
+  const number_min = block.getFieldValue('min');
+  const number_max = block.getFieldValue('max');
+  var code = `knob(${number_min}, ${number_max})`;
+  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+}
+
+Blockly.JavaScript['waitSW_OK_bmp'] = function(block) {
+  var code = `waitSW_OK_bmp();\n`;
+  return code;
+};
+
+Blockly.JavaScript['waitSW_A_bmp'] = function(block) {
+  var code = `waitSW_A_bmp();\n`;
+  return code;
+};
+
+Blockly.JavaScript['waitSW_B_bmp'] = function(block) {
+  var code = `waitSW_B_bmp();\n`;
+  return code;
+};
+
+// Blockly.JavaScript['waitAny_bmp'] = function(block) {
+//   var code = `waitAny_bmp();\n`;
+//   return code;
+// };

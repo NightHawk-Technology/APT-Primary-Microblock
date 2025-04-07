@@ -237,6 +237,122 @@ Blockly.defineBlocksWithJsonArray(
   "nextStatement": null,
   "colour": 200,
   "inputsInline": true
+},
+{
+  "type": "sensor_check",
+  "tooltip": "Check sensor",
+  "message0": "Check sensor values",
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 100,
+  "inputsInline": true
+},
+{
+  "type": "mpuUpdate",
+  "tooltip": "Update MPU6050",
+  "message0": "Update MPU6050",
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 100,
+  "inputsInline": true
+},
+{
+  "type": "getAngle",
+  "tooltip": "Get angle from MPU6050",
+  "message0": "Get angle %1",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "axis",
+      "options": [
+        ["X", "X"],
+        ["Y", "Y"],
+        ["Z", "Z"]
+      ]
+    }
+  ],
+  "output": "Number",
+  "colour": 100,
+  "inputsInline": true
+},
+{
+  "type": "getGyro",
+  "tooltip": "Get gyro from MPU6050",
+  "message0": "Get gyro %1",
+  "args0": [
+    {
+      "type": "field_dropdown",
+      "name": "axis",
+      "options": [
+        ["X", "X"],
+        ["Y", "Y"],
+        ["Z", "Z"]
+      ]
+    }
+  ],
+  "output": "Number",
+  "colour": 100,
+  "inputsInline": true
+},
+{
+  "type": "knob",
+  "tooltip": "Knob",
+  "message0": "Knob min %1 max %2",
+  "args0": [
+    {
+      type: "field_number",
+      name: "min",
+      value: 0,
+      min: 0,
+      max: 4095
+    },
+    {
+      type: "field_number",
+      name: "max",
+      value: 4095,
+      min: 0,
+      max: 4095
+    }
+  ],
+  "output": "Number",
+  "colour": 100,
+  "inputsInline": true
+},
+{
+  "type": "waitSW_OK_bmp",
+  "tooltip": "Wait for switch OK to be pressed",
+  "message0": "Wait for switch OK to be pressed",
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 100,
+  "inputsInline": true
+},
+{
+  "type": "waitSW_A_bmp",
+  "tooltip": "Wait for switch A to be pressed",
+  "message0": "Wait for switch A to be pressed",
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 100,
+  "inputsInline": true
+},
+{
+  "type": "waitSW_B_bmp",
+  "tooltip": "Wait for switch B to be pressed",
+  "message0": "Wait for switch B to be pressed",
+  "previousStatement": null,
+  "nextStatement": null,
+  "colour": 100,
+  "inputsInline": true
 }
+// {
+//   "type": "waitAny_bmp",
+//   "tooltip": "Wait for any switch to be pressed",
+//   "message0": "Wait for any switch to be pressed",
+//   "previousStatement": null,
+//   "nextStatement": null,
+//   "colour": 100,
+//   "inputsInline": true
+// }
 ]
 );
